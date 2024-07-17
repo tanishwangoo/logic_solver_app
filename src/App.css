@@ -18,3 +18,14 @@ body{
   align-items: center;
  
 }
+
+.Truth-TableContainer{
+  width: 500px;
+  height: auto;
+}
+
+.Truth-Table{
+  background-color: rgb(255, 246, 246);
+  border: 2px solid rgb(35, 101, 110);
+  
+}

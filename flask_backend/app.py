@@ -21,13 +21,16 @@ def parse_input(data):
 def get_data():
     data = request.get_json()
     eq_input = data.get("equation", "")
-
+    print(eq_input)
     if not eq_input:
         return jsonify({"error": "No equation provided"}), 400
     
     eq_variables = parse_input(eq_input)
     tt_table = ttg.Truths(eq_variables, [eq_input], ints=False, ascending=True).as_pandas
-    tt_table_dict = tt_table.to_dict(orient='records')
+    
+    # tt_table[eq_input] = tt_table.apply(lambda row: eval(eq_input, {}, row.to_dict()), axis=1)
+    
+    tt_table_dict = tt_table.to_dict(orient= 'records')
     return jsonify(tt_table_dict)
 
 if __name__ == '__main__' : 
